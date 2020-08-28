@@ -1,0 +1,15 @@
+server:
+  port: 1002
+spring:
+  application:
+    name: run-gateway
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://127.0.0.1:1001/eureka
+zuul:
+  prefix: /api # 路由路径前缀
+  routes:
+    run-user: /user/** # 商品微服务的映射路径
+    run-order: /order/** # 商品微服务的映射路径

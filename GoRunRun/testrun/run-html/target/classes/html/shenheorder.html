@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: #ffcc99;
+        }
+
+    </style>
+</head>
+<body>
+<center>
+
+<div id="shenheorder">
+
+    <h1>审核订单</h1>
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>订单编号</td>
+            <td>订单人</td>
+            <td>订单名称</td>
+            <td>订单描述</td>
+            <td>订单状态</td>
+            <td>订单价格</td>
+            <td>审核状态</td>
+            <td>操作</td>
+        </tr>
+        <tr v-for="(o,index) in runorderlist">
+            <td v-text="o.oid"></td>
+            <td v-text="o.username"></td>
+            <td v-text="o.oname"></td>
+            <td v-text="o.odescribe"></td>
+            <td>无状态</td>
+
+            <td v-text="o.price"></td>
+            <td v-if="o.shenheorder==0" style="color: red">待审核</td>
+            <td>
+                <button @click="tongguo(index)" style="color: blue">通过</button>
+                <button @click="jujue(index)" style="color: blue">拒绝</button>
+
+            </td>
+
+
+        </tr>
+
+    </table>
+<form id="ff">
+    <textarea id="tt" placeholder="请填写拒绝的原因,不少于5个字" style="display: none" v-model="runorder.reason" @blur="jujue1()"></textarea>
+
+
+</form>
+
+
+</div>
+</center>
+</body>
+</html>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../js/jquery-3.4.1.js"></script>
+<script src="../js/vue.js"></script>
+<script>
+    var shenheorder=new Vue({
+        el:"#shenheorder",
+        data:{
+            runorderlist:[],
+            runorder:{
+
+            }
+
+        },
+        created(){
+            axios.get("http://localhost:8500/lianxi3/selectorder").then(function(res){
+
+                shenheorder.runorderlist=res.data
+
+            })
+
+
+        },
+        methods:{
+            tongguo(t){
+            var a=shenheorder.runorderlist[t].oid;
+                axios.get("http://localhost:8500/lianxi3/tongguoorder?id="+a).then(function(res){
+                    location.reload()
+                    /*shenheorder.runorderlist=res.data*/
+
+                })
+
+
+            },
+            jujue(t){
+                document.getElementById("tt").style.display=""
+                shenheorder.runorder.oid=shenheorder.runorderlist[t].oid
+            },
+            jujue1(t){
+                if(shenheorder.runorder.reason.length<5){
+                    alert("拒绝原因字数过少，拒绝失败")
+                    document.getElementById("tt").style.display="none"
+                    shenheorder.runorder.reason=""
+                }else{
+
+                    document.getElementById("tt").style.display="none"
+                    axios.post("http://localhost:8500/lianxi3/jujueorder",this.runorder).then(function(res){
+                        shenheorder.runorder.reason=""
+                        location.reload()
+                        /*shenheorder.runorderlist=res.data*/
+
+                    })
+                }
+
+
+
+
+
+            }
+
+        }
+
+
+
+    })
+
+</script>

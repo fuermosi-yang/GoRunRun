@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="run-user-service" />
+        <module name="run-sms" />
+        <module name="run-receiver-interface" />
+        <module name="run-registry" />
+        <module name="run-order-interface" />
+        <module name="run-receiver-service" />
+        <module name="run-common" />
+        <module name="run-user-interface" />
+        <module name="run-order-service" />
+        <module name="run-gateway" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="run-receiver" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gorun" options="-parameters" />
+      <module name="run-common" options="-parameters" />
+      <module name="run-gateway" options="-parameters" />
+      <module name="run-order" options="-parameters" />
+      <module name="run-order-interface" options="-parameters" />
+      <module name="run-order-service" options="-parameters" />
+      <module name="run-receiver" options="-parameters" />
+      <module name="run-receiver-interface" options="-parameters" />
+      <module name="run-receiver-service" options="-parameters" />
+      <module name="run-registry" options="-parameters" />
+      <module name="run-sms" options="-parameters" />
+      <module name="run-user" options="" />
+      <module name="run-user-interface" options="-parameters" />
+      <module name="run-user-service" options="-parameters" />
+    </option>
+  </component>
+</project>

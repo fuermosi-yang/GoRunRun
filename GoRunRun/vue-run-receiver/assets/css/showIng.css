@@ -1,0 +1,196 @@
+@font-face {
+    font-family: 'loding';
+    src: url(Ubuntu-MediumItalic.ttf);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 300vh;
+    background: rgba(0, 0, 0, 0.8);
+}
+ul {
+    list-style: none;
+}
+.font p {
+    font-family: 'loding';
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .8;
+    animation: 2s font linear infinite;
+}
+.font ul li {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.font ul li:nth-child(1) {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: 5px;
+    margin-left: 45px;
+    opacity: .6;
+    animation: 1.2s point_one linear infinite;
+}
+.font ul li:nth-child(2) {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: 5px;
+    margin-left: 60px;
+    opacity: .6;
+    animation: 1.2s point_two linear infinite;
+}
+.font ul li:nth-child(3) {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: 5px;
+    margin-left: 75px;
+    opacity: .6;
+    animation: 1.2s point_three linear infinite;
+}
+.circle_wrap {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 48px #fff inset, 0 0 8px #fff;
+    animation: 1.5s circle_rotate linear infinite;
+}
+.circle_wrap .circle_inside {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px #fff inset, 0 0 8px #fff;
+    clip-path: polygon(40% 0, 0 0, 50% 100%, 0 100%, 100% 35%, 100% 75%);
+}
+.circle_wrap .circle_outside {
+    width: 292px;
+    height: 296px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.circle_outside .wrapper {
+    position: absolute;
+    width: 146px;
+    height: 300px;
+    overflow: hidden;
+}
+.circle_outside .right {
+    right: 0;
+}
+.circle_outside .left {
+    left: 0;
+}
+.circle_outside .circle {
+    width: 280px;
+    height: 280px;
+    border: 8px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    transform: rotate(-135deg);
+}
+.circle_outside .rightcircle {
+    border-top: 8px solid #fff;
+    border-right: 8px solid #fff;
+    box-shadow: 0 0 4px #fff inset;
+    right: 0;
+    animation: 3s circle_right linear infinite;
+}
+.circle_outside .leftcircle {
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid #fff;
+    box-shadow: 0 0 4px #fff inset;
+    left: 0;
+    animation: 3s circle_left linear infinite;
+}
+@keyframes circle_right {
+    0% {
+        transform: rotate(-135deg);
+    }
+    50%, 100% {
+        transform: rotate(45deg);
+    }
+}
+@keyframes circle_left {
+    0%, 50% {
+        transform: rotate(-135deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+@keyframes circle_rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@keyframes point_one {
+    0%, 25% {
+        opacity: 0;
+    }
+    50%, 100% {
+        opacity: .6;
+    }
+}
+@keyframes point_two {
+    0%, 50% {
+        opacity: 0;
+    }
+    75%, 100% {
+        opacity: .6;
+    }
+}
+@keyframes point_three {
+    0%, 75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+@keyframes font {
+    0% {
+        opacity: .8;
+    }
+    25% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .8;
+    }
+    75% {
+        opacity: .5;
+    }
+    100% {
+        opacity: .8;
+    }
+}

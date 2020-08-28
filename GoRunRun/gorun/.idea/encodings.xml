@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-order/run-order-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-order/run-order-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-order/run-order-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-order/run-order-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-registry" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-sms" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-sms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-user/run-user-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-user/run-user-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-user/run-user-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/run-user/run-user-service/src/main/java" charset="UTF-8" />
+  </component>
+</project>

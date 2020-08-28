@@ -1,0 +1,84 @@
+body,html {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+ul {
+    padding: 0;
+    width: 100%;
+    height: 20%;
+}
+
+li {
+    display: inline;
+
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 19.5%;
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 3;
+    color: black;
+}
+
+li:last-child a {
+    margin-right: 0;
+}
+
+a:link, a:visited, a:focus {
+    background: #9cc1b2;
+    background-color: rgb(224, 207, 183);
+}
+
+.fonts1 {
+    font-style: italic;/*设置字体为斜体*/
+    font-variant: small-caps;
+    font-weight: bolder;/*设置字体加粗*/
+    font-size: 30px;/*设置字体大小*/
+    font-family: "黑体";/*设置字体*/
+    font-color:"black";
+
+}
+
+.fonts2 {
+    font-style: italic;/*设置字体为斜体*/
+    font-variant: small-caps;
+    font-weight: bolder;/*设置字体加粗*/
+    font-size: 30px;/*设置字体大小*/
+    font-family: "黑体";/*设置字体*/
+    font-color:"black";
+
+}
+
+.fonts3 {
+    font-style: italic;/*设置字体为斜体*/
+    font-variant: small-caps;
+    font-weight: bolder;/*设置字体加粗*/
+    font-size: 30px;/*设置字体大小*/
+    font-family: "黑体";/*设置字体*/
+    font-color:"black";
+
+}
+
+.fonts4 {
+    font-style: italic;/*设置字体为斜体*/
+    font-variant: small-caps;
+    font-weight: bolder;/*设置字体加粗*/
+    font-size: 30px;/*设置字体大小*/
+    font-family: "黑体";/*设置字体*/
+    font-color:"black";
+
+}
+
+a:hover {
+    background: orange;
+}
+
+a:active {
+    background: red;
+    color: white;
+}

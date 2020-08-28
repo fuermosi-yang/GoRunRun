@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: #ffcc99;
+        }
+        /*.demo{
+
+            position:fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+            min-width: 1000px;
+            z-index:-10;
+            zoom: 1;
+        //  background-color: ;
+            background: url("出水芙蓉 - 2.jpg");
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-position: center 0;
+        }*/
+
+    </style>
+</head>
+<body>
+<center>
+
+
+    <h1>欢迎进入后端管理系统</h1>
+
+    <div id="zhuye">
+
+    <h2>当前系统的普通用户数：{{usercount}}</h2>
+    <h2>当前系统的跑腿员数：{{receivercount}}</h2>
+<button @click="ordercount" style="color: blue">订单信息</button>
+        <h6> <button @click="usermanager" style="color: blue">普通用户管理</button>
+         <button @click="receivermanager" style="color: blue">接单人员管理</button>
+           <button @click="shenheorder" style="color: blue">审核订单</button>
+           <button @click="shenheappraise" style="color: blue">审核评价</button>
+           <button @click="statistics" style="color: blue">统计功能</button>
+
+
+
+       </h6>
+
+    </div>
+</center>
+<center>
+    <div id="main" style="width: 600px;height:400px;"></div>
+</center>
+
+
+
+
+
+
+
+
+</body>
+</html>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../js/jquery-3.4.1.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/echarts.min.js"></script>
+
+<script>
+ var zhuye=new Vue({
+     el:"#zhuye",
+     data:{
+         usercount:"",
+         receivercount:"",
+         count:false
+     },
+     created(){
+           axios.get("http://localhost:8500/lianxi/count").then(function(res){
+               zhuye.usercount= res.data.usercount;
+               zhuye.receivercount= res.data.receivercount;
+
+
+           })
+
+     },
+     methods:{
+         statistics(){
+             location.href="http://localhost:63342/run-controller/run-html/html/statistics.html";
+
+         },
+         shenheorder(){
+             location.href="http://localhost:63342/run-controller/run-html/html/shenheorder.html";
+
+         },
+         shenheappraise(){
+             location.href="http://localhost:63342/run-controller/run-html/html/shenheappraise.html";
+
+         },
+         ordercount(){
+
+             axios.get("http://localhost:8500/lianxi/ordercount").then(function(res){
+                 // 基于准备好的dom，初始化echarts实例
+                /* var myChart = echarts.init(document.getElementById('main'));
+
+                 // 指定图表的配置项和数据
+                 var option = {
+                     title: {
+                         text: 'ECharts 入门示例'
+                     },
+                     tooltip: {},
+                     legend: {
+                         data:['销量']
+                     },
+                     xAxis: {
+                         data: ["未接单","正在派送中","待确认","待付款","待评价","已完成"]
+                     },
+                     yAxis: {},
+                     series: [{
+                         name: '销量',
+                         type: 'bar',//折线图  line
+                         data: [res.data.ordercount1, res.data.ordercount2, res.data.ordercount3, res.data.ordercount4, res.data.ordercount5, res.data.ordercount6]
+                     }]
+                 };
+                 myChart.setOption(option);
+                 // 使用刚指定的配置项和数据显示图表。*/
+                 //饼状图
+
+                 if(zhuye.count){
+                     zhuye.count=false;
+                     document.getElementById("main").style.display="none"
+                     var myChart = echarts.init(document.getElementById('main'));
+                     option = {
+                         title: {
+                             text: '订单详情',
+                             subtext: '真实数据',
+                             left: 'center'
+                         },
+                         tooltip: {
+                             trigger: 'item',
+                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                         },
+                         legend: {
+                             orient: 'vertical',
+                             left: 'left',
+                             data: ["未接单","正在派送中","待确认","待付款","待评价","已完成"]
+                         },
+                         series: [
+                             {
+                                 name: '访问来源',
+                                 type: 'pie',
+                                 radius: '55%',
+                                 center: ['50%', '60%'],
+                                 data: [
+                                     {value: res.data.ordercount1, name: '未接单'},
+                                     {value: res.data.ordercount2, name: '正在派送中'},
+                                     {value: res.data.ordercount3, name: '待确认'},
+                                     {value: res.data.ordercount4, name: '待付款'},
+                                     {value: res.data.ordercount5, name: '待评价'},
+                                     {value: res.data.ordercount6, name: '已完成'}
+                                 ],
+                                 emphasis: {
+                                     itemStyle: {
+                                         shadowBlur: 10,
+                                         shadowOffsetX: 0,
+                                         shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                     }
+                                 }
+                             }
+                         ]
+                     };
+
+                     // 使用刚指定的配置项和数据显示图表。
+                     myChart.setOption(option);
+                 }else{
+                     document.getElementById("main").style.display=""
+                     zhuye.count=true
+                     var myChart = echarts.init(document.getElementById('main'));
+                     option = {
+                         title: {
+                             text: '订单详情',
+                             subtext: '真实数据',
+                             left: 'center'
+                         },
+                         tooltip: {
+                             trigger: 'item',
+                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                         },
+                         legend: {
+                             orient: 'vertical',
+                             left: 'left',
+                             data: ["未接单","正在派送中","待确认","待付款","待评价","已完成"]
+                         },
+                         series: [
+                             {
+                                 name: '访问来源',
+                                 type: 'pie',
+                                 radius: '55%',
+                                 center: ['50%', '60%'],
+                                 data: [
+                                     {value: res.data.ordercount1, name: '未接单'},
+                                     {value: res.data.ordercount2, name: '正在派送中'},
+                                     {value: res.data.ordercount3, name: '待确认'},
+                                     {value: res.data.ordercount4, name: '待付款'},
+                                     {value: res.data.ordercount5, name: '待评价'},
+                                     {value: res.data.ordercount6, name: '已完成'}
+                                 ],
+                                 emphasis: {
+                                     itemStyle: {
+                                         shadowBlur: 10,
+                                         shadowOffsetX: 0,
+                                         shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                     }
+                                 }
+                             }
+                         ]
+                     };
+
+                     // 使用刚指定的配置项和数据显示图表。
+                     myChart.setOption(option);
+                 }
+
+
+
+
+
+             })
+
+
+
+         },
+         usermanager(){
+             location.href="http://localhost:63342/run-controller/run-html/html/usermanager.html";
+
+
+         },
+         receivermanager(){
+             location.href="http://localhost:63342/run-controller/run-html/html/receivermanager.html";
+
+         }
+
+     }
+
+
+
+ })
+
+
+
+
+
+
+
+
+
+            function aaa() {
+
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('main'));
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: 'ECharts 入门示例'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['销量']
+                    },
+                    xAxis: {
+                        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '销量',
+                        type: 'bar',//折线图  line
+                        data: [5, 20, 36, 10, 10, 20]
+                    }]
+                };
+                myChart.setOption(option);
+                // 使用刚指定的配置项和数据显示图表。
+
+
+
+            }
+
+
+</script>

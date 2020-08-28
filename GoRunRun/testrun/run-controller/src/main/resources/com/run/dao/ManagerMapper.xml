@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.run.dao.ManagerMapper">
+
+
+  <select id="selectmanager" resultType="com.run.pojo.Manager">
+
+      select * from run_manager
+
+
+  </select>
+    <select id="jiaoYanManager" resultType="com.run.pojo.Manager" parameterType="com.run.pojo.Manager">
+        select * from run_manager where musername=#{musername} and password=#{password}
+
+    </select>
+<select id="selectUserCount" resultType="int">
+    select count(*) from run_user
+
+</select>
+    <select id="selectReceiverCount" resultType="int">
+    select count(*) from run_receiver
+
+</select>
+    <select id="selectOrderCount1" resultType="int">
+        select count(*) from run_order where ostatus=1
+    </select>
+    <select id="selectOrderCount2" resultType="int">
+        select count(*) from run_order where ostatus=2
+    </select>
+    <select id="selectOrderCount3" resultType="int">
+        select count(*) from run_order where ostatus=3
+    </select>
+    <select id="selectOrderCount4" resultType="int">
+        select count(*) from run_order where ostatus=4
+    </select>
+    <select id="selectOrderCount5" resultType="int">
+        select count(*) from run_order where ostatus=5
+    </select>
+    <select id="selectOrderCount6" resultType="int">
+        select count(*) from run_order where ostatus=6
+    </select>
+
+    <select id="selectRunUser" resultType="com.run.pojo.RunUser" parameterType="com.run.pojo.RunUser">
+
+        select * from run_user
+    </select>
+
+    <update id="jieJinUser" parameterType="Long">
+        update run_user set status=1 where uid=#{id}
+    </update>
+    <update id="jinYongUser" parameterType="Long">
+        update run_user set status=0 where uid=#{id}
+    </update>
+    <delete id="shanChuUser" parameterType="Long">
+        delete from run_user where uid=#{id}
+
+    </delete>
+
+    <select id="souSuoUser" parameterType="com.run.pojo.RunUser" resultType="com.run.pojo.RunUser">
+        select * from run_user where uname like '%${uname}%' or username like '%${uname}%' or uphone like '%${uname}%'
+
+
+    </select>
+
+    <select id="selectRunReceiver" resultType="com.run.pojo.RunReceiver">
+        select * from run_receiver
+
+    </select>
+    <update id="jieJinReceiver" parameterType="Long">
+        update run_receiver set status=1 where rid=#{id}
+
+    </update>
+    <update id="jinYongReceiver" parameterType="Long">
+        update run_receiver set status=0 where rid=#{id}
+
+    </update>
+    <delete id="shanChuReceiver" parameterType="Long">
+        delete from run_receiver where rid=#{id}
+    </delete>
+
+    <select id="souSuoReceiver" resultType="com.run.pojo.RunReceiver" parameterType="com.run.pojo.RunUser">
+        select * from run_receiver where rname like '%${uname}%' or rusername like '%${uname}%' or phone like '%${uname}%'
+
+    </select>
+
+  
+</mapper>

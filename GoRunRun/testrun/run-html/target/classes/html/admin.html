@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*body{
+            background-image: url("【独家】黄飞鸿之英雄有梦 - 50.jpg");
+        }*/
+        .demo{
+
+            position:fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+            min-width: 1000px;
+            z-index:-10;
+            zoom: 1;
+        //  background-color: ;
+            background: url("风景 - 40.jpg");
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-position: center 0;
+        }
+
+
+    </style>
+</head>
+<body class="demo">
+<center>
+<div id="html">
+    <h1>欢迎进入后台管理系统登陆界面</h1>
+        <div style="color: red">{{yanzheng}}</div><br>
+    账号<input type="text" v-model="musername"><br>
+    密码<input type="text" v-model="password"><br>
+    <button @click="login()" style="color: blue">登陆</button>
+
+</div>
+</center>
+
+</body>
+</html>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../js/jquery-3.4.1.js"></script>
+<script src="../js/vue.js"></script>
+
+
+
+
+<script>
+    var html=new Vue({
+        el:"#html",
+        data:{
+            musername:"",
+            password:"",
+            yanzheng:""
+
+        },
+        methods:{
+            login(){
+               /* axios.post("http://localhost:8500/lianxi/selectmanager"),then(function(res){
+
+
+
+
+                })*/
+                axios.post("http://localhost:8500/lianxi/selectmanager",{"musername":html.musername,"password":html.password}).then(function(res){
+
+                    if(res.data.musername=="可以的"){
+                        location.href="http://localhost:63342/run-controller/run-html/html/main.html";
+                    }
+                    if(res.data.musername=="不可以的"){
+                        html.musername="";
+                        html.password="";
+                        html.yanzheng="账号或密码不正确请重新输入";
+
+                    }
+
+
+                })
+
+
+
+            }
+
+
+        }
+
+
+
+    })
+
+
+
+
+</script>

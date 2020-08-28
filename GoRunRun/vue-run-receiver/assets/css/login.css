@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'firefly';
+    src: url(../font/ZCOOLKuaiLe-Regular.ttf);
+}
+blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, li, ol, p, p, pre, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+input {
+    outline: none;
+    border: none;
+}
+html, body {
+    height: 100vh;
+}
+body {
+    font-family: 'firefly';
+    background: url(/assets/img/cloud.png) no-repeat;
+    background-size: cover;
+}
+.container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.panel {
+    width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:rgba(37, 146, 170, 0.1);
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.switch {
+    text-align: center;
+    border-bottom: 2px solid #4F9D9D;
+}
+.switch span,
+.switch p {
+    display: inline-block;
+    color: rgb(22, 24, 22);
+    font-size: 28px;
+    margin-bottom: 12px;
+    /* text-shadow: 0 0 12px rgb(40, 151, 57); */
+    text-shadow: 0 0 12px rgb(95, 128, 150);
+}
+.switch p {
+    transition: .3s;
+    cursor: pointer;
+}
+.switch span {
+    font-size: 36px;
+    margin: 0 25px;
+    cursor: default;
+}
+.switch .current {
+    color: rgb(13, 15, 13);
+    text-shadow: 0 0 16px #0066CC;
+}
+.login #email,
+.login #passwordrepeat {
+    margin: 0;
+    height: 0;
+    opacity: 0;
+}
+.login #email input,
+.login #passwordrepeat input{
+    margin: 0;
+    height: 0;
+    opacity: 0;
+    cursor: default;
+}
+.login #password {
+    margin: 40px 0 5px;
+}
+.register #passwordrepeat {
+    margin: 40px 0 5px;
+}
+form .input {
+    text-align: center;
+    margin: 40px 0;
+    transition: .3s;
+}
+form .input input {
+    font-size: 15px;
+    padding-left: 2px;
+    width: 280px;
+    height: 30px;
+    background: none;
+    border-bottom: 2px solid #0F591A;
+    color: 	#200000;
+}
+form #forget {
+    position: relative;
+    margin-left: 260px;
+    font-size: 14px;
+    color: rgb(0, 155, 23);
+}
+form #forget:hover {
+    color: #0C4019;
+}
+form button {
+    position: relative;
+    outline: none;
+    border: none;
+    display: block;
+    width: 180px;
+    height: 60px;
+    margin: 30px auto 0;
+    background: linear-gradient(to right, #3f62ad 10%, #55B455);
+    border-radius: 40px;
+    cursor: pointer;
+    opacity: .88;
+    transition: .4s;
+}
+form button:hover {
+    box-shadow: 0 0 10px #B4FFB4;
+}
+form button p {
+    line-height: 60px;
+    font-size: 20px;
+    color: #F5DD8F;
+    font-family: firefly;
+    opacity: .88;
+}
+.lightning {
+    width: 95%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 40px;
+    transition: .8s;
+}
+form button:hover .lightning {
+    box-shadow: 0 0 4px #B4FFB4 inset;
+}
+.lightning ul {
+    list-style: none;
+    opacity: 0;
+    transition: .8s;
+}
+form button:hover ul {
+    opacity: .8;
+}
+.lightning ul li {
+    width: 5px;
+    height: 5px;
+    background-color: #91FA91;
+    position: absolute;
+    bottom: 10%;
+    border-radius: 50%;
+    animation: fireflymove infinite linear;
+    opacity: .6;
+}
+@keyframes fireflymove {
+    100% {
+        bottom: 100%;
+    }
+}

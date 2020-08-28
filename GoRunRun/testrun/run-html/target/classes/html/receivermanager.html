@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: black;
+        }
+
+    </style>
+</head>
+<body>
+<a href="javascript:location.reload()">刷新页面</a>
+<center>
+    <h1 style="color: aliceblue">接单人员管理</h1>
+    <div id="usermanager">
+        <input type="text" v-model="runuser.uname" placeholder="根据昵称   用户名    或    电话搜索" style="width: 300px">
+
+        <button @click="sousuo()" style="color: blue">搜索</button>
+
+        <table border="1" cellspacing="0" style="color: aliceblue">
+            <tr>
+                <td>编号</td>
+                <td>用户名</td>
+                <td>性别</td>
+                <td>照片</td>
+                <td>姓名</td>
+                <td>密码</td>
+                <td>手机号</td>
+                <td>家庭住址</td>
+                <td>现在地址</td>
+                <td>状态</td>
+                <td>创建时间</td>
+
+
+                <td>账户金额</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="(u,index) in runuserlist">
+                <td v-text="u.rid"></td>
+                <td v-text="u.rname"></td>
+                <td v-text="u.rsex"></td>
+                <td>
+
+                    <img src="【独家】黄飞鸿之英雄有梦%20-%2050.jpg" width="70" height="50">
+                </td>
+                <td v-text="u.rusername"></td>
+                <td v-text="u.rpassword"></td>
+                <td v-text="u.phone"></td>
+                <td v-text="u.address"></td>
+                <td v-text="u.addresssing"></td>
+
+                <td v-if="u.status==0" style="color: red">禁用中</td>
+                <td v-if="u.status==1" style="color: blue">使用中</td>
+                <td v-text="u.rcreatetime"></td>
+                <td v-text="u.rmoney"></td>
+                <td><button v-if="u.status==0" @click="jiejin(index)" style="color: blue">解禁</button><button v-if="u.status==1" @click="jinyong(index)" style="color: blue">禁用</button></td>
+                <td><button @click="shanchu(index)" style="color: blue">删除接单员</button></td>
+            </tr>
+        </table>
+        <button @click="jump1()" id="button1" style="color: blue">首页</button>
+        <button @click="jump2()" id="button2" style="color: blue">上一页</button>
+        <button @click="jump3()" id="button3" style="color: blue">下一页</button>
+        <button @click="jump4(lastPage)" id="button4" style="color: blue">尾页</button>
+
+    </div>
+
+
+
+
+
+
+</center>
+</body>
+</html>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../js/jquery-3.4.1.js"></script>
+<script src="../js/vue.js"></script>
+<script>
+
+    var usermanager=new Vue({
+        el:"#usermanager",
+        data:{
+            runuserlist:[],
+            runuser:{},
+            lastPage:0,
+            pageNum:0
+        },
+        methods:{
+
+        },created(){
+            axios.post("http://localhost:8500/lianxi1/selectuser",this.runuser).then(function(res){
+
+                usermanager.runuserlist=res.data;
+                usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                usermanager.pageNum=usermanager.runuserlist[0].pageNum
+
+            })
+
+
+
+        },
+        methods:{
+            jump4(a){
+                usermanager.runuser.pageNum=a;
+                axios.post("http://localhost:8500/lianxi1/selectuser",this.runuser).then(function(res){
+
+                    usermanager.runuserlist=res.data;
+                    usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                    usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                    usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                })
+            },
+            jump1(){
+                usermanager.runuser.pageNum=1;
+                axios.post("http://localhost:8500/lianxi1/selectuser",this.runuser).then(function(res){
+
+                    usermanager.runuserlist=res.data;
+                    usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                    usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                    usermanager.pageNum=usermanager.runuserlist[0].pageNum
+
+                })
+            },
+            jump2(){
+                var j2=usermanager.pageNum-1
+                if(j2>0&&j2<=usermanager.lastPage){
+                    usermanager.runuser.pageNum=j2;
+                    axios.post("http://localhost:8500/lianxi1/selectuser",this.runuser).then(function(res){
+
+                        usermanager.runuserlist=res.data;
+                        usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                        usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                        usermanager.pageNum=usermanager.runuserlist[0].pageNum
+
+                    })
+                }
+
+
+            },
+            jump3(){
+
+
+                var j2=usermanager.pageNum+1
+                if(j2>0&&j2<=usermanager.lastPage){
+                    usermanager.runuser.pageNum=j2;
+                    axios.post("http://localhost:8500/lianxi1/selectuser",this.runuser).then(function(res){
+
+                        usermanager.runuserlist=res.data;
+                        usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                        usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                        usermanager.pageNum=usermanager.runuserlist[0].pageNum
+
+                    })
+                }
+            },
+            jiejin(i){
+
+                axios.get("http://localhost:8500/lianxi1/jiejinuser?id="+usermanager.runuserlist[i].rid).then(function(res){
+                    location.reload()
+                    /* usermanager.runuserlist=res.data;
+                     usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum*/
+
+                })
+
+
+
+            },
+            jinyong(i){
+
+                axios.get("http://localhost:8500/lianxi1/jinyonguser?id="+usermanager.runuserlist[i].rid).then(function(res){
+                    location.reload()
+                    /* usermanager.runuserlist=res.data;
+                     usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum*/
+
+                })
+            },
+            shanchu(i){
+                axios.get("http://localhost:8500/lianxi1/shanchuuser?id="+usermanager.runuserlist[i].rid).then(function(res){
+                    location.reload()
+                    /* usermanager.runuserlist=res.data;
+                     usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum*/
+
+                })
+            },
+            sousuo(){
+                axios.post("http://localhost:8500/lianxi1/sousuouser",this.runuser).then(function(res){
+                    usermanager.runuserlist=res.data;
+                    document.getElementById("button1").style.display="none"
+                    document.getElementById("button2").style.display="none"
+                    document.getElementById("button3").style.display="none"
+                    document.getElementById("button4").style.display="none"
+                    /* usermanager.runuserlist=res.data;
+                     usermanager.lastPage=usermanager.runuserlist[0].lastPage
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum
+                     usermanager.pageNum=usermanager.runuserlist[0].pageNum*/
+
+
+                })
+
+            }
+
+
+
+        }
+
+
+
+
+    })
+
+
+
+
+
+</script>

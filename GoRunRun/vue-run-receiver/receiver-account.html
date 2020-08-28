@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+
+    <link rel="stylesheet" href="node_modules/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<div id="app">
+
+    <!-- 侧边栏-->
+    <el-menu
+            :default-active="activeIndex2"
+            class="el-menu-demo"
+            mode="horizontal"
+            @select="handleSelect"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
+        <el-menu-item index="1">
+            <i class="el-icon-menu"></i>
+            <a href="receiver-home.html"> <span slot="title"><el-tag type="danger" >接单个人中心</el-tag></span></a>
+        </el-menu-item>
+        <el-menu-item index="2">
+            <i class="el-icon-menu"></i>
+            <a href="receiver-order.html"> <span slot="title"><el-tag type="danger" >订单中心</el-tag></span></a>
+        </el-menu-item>
+        <el-menu-item index="3">
+            <i class="el-icon-setting"></i>
+            <a href="receiver-account.html"> <span slot="title"><el-tag type="danger" >注销账号</el-tag></span></a>
+        </el-menu-item>
+        <el-menu-item index="4">
+            <i class="el-icon-setting"></i>
+            <a href="receiver-appraise.html"> <span slot="title"><el-tag type="danger">个人评价</el-tag></span></a>
+        </el-menu-item>
+        <el-menu-item index="5">
+            <i class="el-icon-setting"></i>
+            <a href="receiver-home-order.html"> <span slot="title"><el-tag type="danger">已接訂單</el-tag></span></a>
+        </el-menu-item>
+
+    <template>
+        <el-table
+                :data="re"
+                style="width: 100%">
+            <el-table-column
+                    property="rid"
+                    label="接单员id"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="rname"
+                    label="接单员名称"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="rusername"
+                    label="接单员用户名"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="phone"
+                    label="接单员手机号"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="接单员地址"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="status"
+                    label="接单员账号状态"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="rcreatetime"
+                    label="接单员注册时间"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="rmoney"
+                    label="当前账户余额"
+                    width="180">
+            </el-table-column>
+            <el-table-column prop="id" label="注销账号">
+                <template slot-scope="scope">
+                    <el-button type="info" size="small" ><a @click="save" target="_blank">注销账号</a></el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="node_modules/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1',
+                isCollapse: true,
+                re:[/*{
+                        rid:"1",
+                    rname:"张三",
+                    rusername:"666",
+                    phone:"18526825689",
+                    address:"北京",
+                    status:"启用",
+                    rcreatetime:"2012/12/12",
+                    rmoney:"666"
+
+                }*/]
+
+            };
+        },
+
+        methods: {
+            save(){
+                var _this = this
+                //修改狀態
+                debugger;
+                axios.put("http://api.gorunrun.com/api/user/receiver/updateReceiver",this.re).then(function({data}=res){
+
+                    console.log(this.re)
+                    location.href="receiver-home.html";
+                })
+            },
+
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+            columnStyle({ row, column, rowIndex, columnIndex }) {
+                if (columnIndex == 0 || columnIndex == 1 || columnIndex == 3) {
+                    //第三第四列的背景色就改变了2和3都是列数的下标
+                    return "background:#f3f6fc;";
+                }else{
+                    return "background:#ffffff;";
+                }
+            },
+
+        },
+        mounted: function () {
+            var _this = this   //很重要！！
+            axios.get("http://api.gorunrun.com/api/user/receiver/rid/3")
+                .then(function (res) {
+                    console.log(res);
+                    _this.re = res.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        /*created(){
+
+            axios.get().then(function (res) {
+
+                this.re = res.data;
+
+            debugger;
+            })
+        }*/
+    })
+</script>
+
+</html>
+

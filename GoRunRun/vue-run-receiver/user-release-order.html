@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+
+    <link rel="stylesheet" href="node_modules/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .el-table .warning-row {
+            background: oldlace;
+        }
+
+        .el-table .success-row {
+            background: #f0f9eb;
+        }
+    </style>
+
+</head>
+<div id="app">
+
+    <!-- 侧边栏-->
+
+    <el-menu
+
+            :default-active="activeIndex2"
+            class="el-menu-demo"
+            mode="horizontal"
+            @select="handleSelect"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
+        <el-menu-item index="1">
+            <i class="el-icon-menu"></i>
+            <a href="user-home.html"> <span slot="title"><el-tag type="danger" >用户个人中心</el-tag></span></a>
+        </el-menu-item>
+        <el-menu-item index="2">
+            <i class="el-icon-menu"></i>
+            <a href="user-order.html"> <span slot="title"><el-tag type="danger" >发布订单</el-tag></span></a>
+        </el-menu-item>
+        <el-menu-item index="3">
+            <i class="el-icon-setting"></i>
+            <a href="user-release-order.html"> <span slot="title"><el-tag type="danger" >查看已发布订单</el-tag></span></a>
+        </el-menu-item>
+        <el-menu-item index="4">
+            <i class="el-icon-setting"></i>
+            <a href="user-account.html"> <span slot="title"><el-tag type="danger">注销账号</el-tag></span></a>
+        </el-menu-item>
+    </el-menu>
+    <template>
+        <el-table
+                :data="orders"
+                style="width: 100%"
+                :row-class-name="tableRowClassName">
+            <el-table-column
+                    prop="oid"
+                    label="订单id"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="rid"
+                    label="接单人id"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="oname"
+                    label="订单名称"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="ostatus"
+                    label="订单状态"
+                    width="300">
+                <template slot-scope="scope">
+                    <p v-if="orders[scope.$index].ostatus==1">待接单</p>
+                    <p v-if="orders[scope.$index].ostatus==2">派送中</p>
+                    <p v-if="orders[scope.$index].ostatus==3">待用户确定</p>
+                    <p v-if="orders[scope.$index].ostatus==4">待评价</p>
+                    <p v-if="orders[scope.$index].ostatus==5">完成 </p>
+
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="price"
+                    label="订单价格"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="shenheorder"
+                    label="审核状态"
+                    width="300">
+                <template slot-scope="scope">
+                    <p v-if="orders[scope.$index].shenheorder==0">待审核</p>
+                    <p v-if="orders[scope.$index].shenheorder==1">通过</p>
+                    <p v-if="orders[scope.$index].shenheorder==2">拒绝</p>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="odescribe"
+                    label="订单详细"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    label="确认订单"
+                    width="180">
+                <el-button type="warning" icon="el-icon-star-off" circle @click="save(orders[0].oid)">确定订单已送达了 吗0..0</el-button>
+            </el-table-column>
+            <el-table-column
+                    label="进行评价"
+                    width="180">
+                <el-button type="warning" icon="el-icon-star-off" circle ><a @click="toEdit(3,orders[0].uid)" target="_blank">去评价0..0 </a></el-button>
+
+
+            </el-table-column>
+            {{orders.rid}}
+        </el-table>
+    </template>
+
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="node_modules/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1',
+                isCollapse: true,
+                /* tableData: [{
+                     date: '2016-05-02',
+                     name: '王小虎',
+                     address: '上海市普陀区金沙江路 1518 弄',
+                 }, {
+                     date: '2016-05-04',
+                     name: '王小虎',
+                     address: '上海市普陀区金沙江路 1518 弄'
+                 }, {
+                     date: '2016-05-01',
+                     name: '王小虎',
+                     address: '上海市普陀区金沙江路 1518 弄',
+                 }, {
+                     date: '2016-05-03',
+                     name: '王小虎',
+                     address: '上海市普陀区金沙江路 1518 弄'
+                 }],*/
+                orders:[{
+
+                }]
+
+
+            };
+        },
+
+        methods: {
+            save(oid){
+                var _this = this
+                debugger;
+                //修改訂單為已完成狀態
+                axios.put("http://api.gorunrun.com/api/order/order/updOstatus3",this.orders[0]).then(function({data}=res){
+
+
+                    location.href="user-home.html";
+                })
+            },
+            tableRowClassName({row, rowIndex}) {
+                if (rowIndex === 1) {
+                    return 'warning-row';
+                } else if (rowIndex === 3) {
+                    return 'success-row';
+                }
+                return '';
+            },
+
+
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClick(row) {
+                console.log(row);
+            },
+            columnStyle({ row, column, rowIndex, columnIndex }) {
+                if (columnIndex == 0 || columnIndex == 1 || columnIndex == 3) {
+                    //第三第四列的背景色就改变了2和3都是列数的下标
+                    return "background:#f3f6fc;";
+                }else{
+                    return "background:#ffffff;";
+                }
+            },
+            toEdit(rid,uid){
+                debugger;
+                location.href="appraise.html?rid="+rid+"&&uid="+uid;
+
+            }
+
+        },
+       mounted: function () {
+            var _this = this   //很重要！！
+           var id = location.search.substring(4);
+
+            axios.get("http://api.gorunrun.com/api/order/order/uid/"+id)//死数据
+                .then(function (res) {
+                    console.log(res);
+                    _this.orders = res.data
+                    debugger;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+
+    })
+</script>
+
+</html>
+

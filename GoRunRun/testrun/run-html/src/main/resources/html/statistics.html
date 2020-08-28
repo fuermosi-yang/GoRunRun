@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-image: url("purple-waves-gradient-stock-photo-abstract-40909.jpeg");
+        }
+        #statistics{
+            margin: 10%;
+        }
+    </style>
+</head>
+<body>
+<center>
+
+<div id="statistics">
+    <h1 style="color: aliceblue">统计</h1>
+    <h1><button @click="statisticsUser7" style="color: blue">最近七天注册用户数量</button>
+    <button @click="statisticsUser30" style="color: blue">最近三十天注册用户数量</button>
+    <button @click="statisticsOrder7" style="color: blue">最近七天信息数量</button>
+    <button @click="statisticsOrder30" style="color: blue">最近三十天信息数量</button></h1>
+
+
+</div>
+
+<div id="main" style="width: 600px;height:400px;"></div>
+<div id="main1" style="width: 600px;height:400px;"></div>
+<div id="main2" style="width: 600px;height:400px;"></div>
+<div id="main3" style="width: 600px;height:400px;"></div>
+</center>
+</body>
+</html>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="../js/jquery-3.4.1.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script>
+    var statistics=new Vue({
+        el:"#statistics",
+        data:{
+          createtime:[],
+          count:[],
+            createtime1:[],
+            count1:[],
+            createtime2:[],
+            count2:[],
+            createtime3:[],
+            count3:[]
+        },
+        methods:{
+            statisticsUser7(){
+                axios.get("http://localhost:8500/lianxi5/statisticsuser7").then(function(res){
+                    var a=res.data
+
+                    for(var i=0;i<a.length;i++){
+
+
+                        var g=a[i].createtime+""
+                        var h=g.substring(0,10)
+                        statistics.createtime[i]=h
+
+                        statistics.count[i]=a[i].count
+
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '最近七天用户注册数量'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['销量']
+                        },
+                        xAxis: {
+                            data: statistics.createtime
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '销量',
+                            type: 'line',//折线图  line
+                            data: statistics.count
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+
+
+
+
+                })
+
+
+            },
+            statisticsUser30(){
+                axios.get("http://localhost:8500/lianxi5/statisticsuser30").then(function(res){
+                    var a=res.data
+
+                    for(var i=0;i<a.length;i++){
+
+
+                        var g=a[i].createtime+""
+                        var h=g.substring(0,10)
+                        statistics.createtime1[i]=h
+
+                        statistics.count1[i]=a[i].count
+
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '最近30天用户注册数量'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['销量']
+                        },
+                        xAxis: {
+                            data: statistics.createtime1
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '销量',
+                            type: 'line',//折线图  line
+                            data: statistics.count1
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+
+
+
+
+                })
+
+
+            },
+            statisticsOrder7(){
+                axios.get("http://localhost:8500/lianxi5/statisticsorder7").then(function(res){
+                    var a=res.data
+
+                    for(var i=0;i<a.length;i++){
+
+
+                        var g=a[i].createtime+""
+                        var h=g.substring(0,10)
+                        statistics.createtime2[i]=h
+
+                        statistics.count2[i]=a[i].count
+
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '最近七天信息数量'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['销量']
+                        },
+                        xAxis: {
+                            data: statistics.createtime2
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '销量',
+                            type: 'line',//折线图  line
+                            data: statistics.count2
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+
+
+
+
+                })
+
+
+            },
+            statisticsOrder30(){
+                axios.get("http://localhost:8500/lianxi5/statisticsorder30").then(function(res){
+                    var a=res.data
+
+                    for(var i=0;i<a.length;i++){
+
+
+                        var g=a[i].createtime+""
+                        var h=g.substring(0,10)
+                        statistics.createtime3[i]=h
+
+                        statistics.count3[i]=a[i].count
+
+                    }
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '最近三十天信息数量'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['销量']
+                        },
+                        xAxis: {
+                            data: statistics.createtime3
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '销量',
+                            type: 'line',//折线图  line
+                            data: statistics.count3
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+
+
+
+
+                })
+
+
+            }
+
+
+
+        }
+
+
+
+    })
+
+
+</script>

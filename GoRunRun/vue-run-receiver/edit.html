@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .fonts{
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <el-radio-group v-model="labelPosition" size="small">
+        <el-radio-button label="left">左对齐</el-radio-button>
+        <el-radio-button label="right">右对齐</el-radio-button>
+        <el-radio-button label="top">顶部对齐</el-radio-button>
+    </el-radio-group>
+    <div style="margin-left: 45%">
+        <span id="fonts">
+           <b>修改中心</b>
+        </span>
+    </div>
+    <div style="margin-left: 40%;" >
+    <el-form :label-position="labelPosition" label-width="80px" >
+        <el-form-item label="接单人名" prop="rname" >
+            <el-col :span="4" >
+            <el-input v-model.trim="re.rname"></el-input>
+            </el-col>
+        </el-form-item>
+        <el-form-item label="用户名称" prop="rusername">
+            <el-col :span="4">
+                <el-input v-model="re.rusername"></el-input>
+            </el-col>
+        </el-form-item>
+        <el-form-item label="用户密码" prop="rpassword">
+            <el-col :span="4">
+                <el-input v-model="re.rpassword"></el-input>
+            </el-col>
+        </el-form-item>
+        <el-form-item label="手机号码" prop="phone">
+            <el-col :span="4">
+                <el-input v-model="re.phone"></el-input>
+            </el-col>
+        </el-form-item>
+        <el-form-item label="居住地址" prop="address">
+            <el-col :span="4">
+                <el-input v-model="re.address"></el-input>
+            </el-col>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="save">立即修改</el-button>
+        </el-form-item>
+    </el-form>
+    </div>
+</div>
+</body>
+<script src="dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="node_modules/axios/dist/axios.js"></script>
+
+<script src="node_modules/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+
+            return {
+                labelPosition: 'right',
+                re:{
+                    rid:"0"
+                }
+
+
+            };
+        },
+        methods:{
+            save(){
+                var _this = this
+
+                axios.put("http://api.gorunrun.com/api/user/receiver/updateReceiver",this.re).then(function({data}=res){
+
+                    console.log(this.re)
+                    location.href="receiver-home.html";
+                })
+            }
+
+
+        },
+        computed(){
+
+        },
+       /* created(){
+            console.log(location.search);
+
+
+             axios.get("http://localhost:1002/api/user/receiver/rid/1").then(function (res) {
+
+               this.re = res.data;
+                debugger;
+
+            })
+
+        }*/
+      mounted: function () {
+          console.log(location.search);// ?id=53 字符串
+          var id = location.search.substring(4);
+
+           var _this = this  //很重要！！
+
+                axios.get("http://api.gorunrun.com/api/user/receiver/rid/"+id)
+                .then(function (res) {
+                    console.log(res);
+                    _this.re = res.data[0]
+
+                });
+        },
+
+    })
+</script>
+</html>

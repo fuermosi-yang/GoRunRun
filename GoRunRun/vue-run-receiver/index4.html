@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:title" content="Vide" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- js -->
+   <script src="js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<!-- animation-effect -->
+<link href="css/animate.min.css" rel="stylesheet"> 
+<script src="js/wow.min.js"></script>
+<script>
+ new WOW().init();
+</script>
+<!-- //animation-effect -->
+<!-- Custom Theme files -->
+<!--webfont-->
+<link href='http://fonts.useso.com/css?family=Vollkorn:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+
+</head>
+<body>
+	
+<!-- banner -->
+	<div data-vide-bg="video/sea">
+		<div class="center-container">
+			<div class="container">
+				<div class="navigation">
+					<div class="navigation-left animated wow slideInLeft" data-wow-delay="700ms">
+						<ul>
+							<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>+0123 384 920</li>
+							<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">example.com</a></li>
+						</ul>
+					</div>
+					<div class="navigation-right">
+						<span class="menu"><img src="images/menu.png" alt=" " /></span>
+						<nav class="link-effect-4" id="link-effect-4">
+							<ul class="nav1 nav nav-wil">
+								<li class="active"><a data-hover="首页" href="index4.html">首页</a></li>
+								<li><a data-hover="去了解" href="#about" class="scroll">去了解</a></li>
+								<li><a data-hover="规则" href="#services" class="scroll">规则</a></li>
+								<li><a data-hover="照片墙" href="#gallery" class="scroll">照片墙</a></li>
+								<li><a data-hover="服务中心" onclick="gotoUserService()" class="scroll">服务中心</a></li>
+							</ul>
+						</nav>
+							<!-- script-for-menu -->
+								<script>
+								   $( "span.menu" ).click(function() {
+									 $( "ul.nav1" ).slideToggle( 300, function() {
+									 // Animation complete.
+									  });
+									 });
+								</script>
+							<!-- /script-for-menu -->
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="logo animated wow zoomIn" data-wow-delay="900ms">
+					<h1><a href="index.html">Go Run Run <span>Welcome You</span></a></h1>
+				</div>
+				<div class="start animated wow bounce" data-wow-delay="700ms">
+					<a href="#firstPages" class="hvr-bounce-to-bottom scroll">开启旅程吧</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="js/jquery.vide.min.js"></script>
+<!-- //banner -->
+<!-- banner-bottom -->
+	<div id="firstPages" class="banner-bottom">
+		<div class="container">
+			<div class="col-md-6 banner-bottom-left animated wow bounceInLeft" data-wow-delay="700ms">
+				<div class="banner-bottom-text">
+					<h2>My</h2>
+					<div class="banner-bottom-text-pos">
+						<h3>am great</h3>
+					</div>
+				</div>
+				<div class="bar1 bar-con">
+					<div class="bar" data-percent="70"></div>
+				</div>
+						<script>
+							(function ( $ ) {
+								  $.fn.progress = function() {
+									var percent = this.data("percent");
+									this.css("width", percent+"%");
+								  };
+								}( jQuery ));
+
+								$(document).ready(function(){
+								  $(".bar1 .bar").progress();
+								});
+						</script>
+				<p>GoRunRun给了我们最大的希望，让整个团队变得超前</p>
+				<div class="social">
+					<ul class="social-nav model-8">
+						<li><a href="#" class="facebook"><i></i></a></li>
+						<li><a href="#" class="twitter"><i> </i></a></li>
+						<li><a href="#" class="g"><i></i></a></li>
+						<li><a href="#" class="p"><i></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6 banner-bottom-right animated wow bounceInRight" data-wow-delay="700ms">
+				<div class="banner-bottom-right-left">
+					<div class="banner-bottom-right-left1">
+						<div class="box">
+							<div class="cover top-left">
+							  <h3 class="title">我们曾跌落低谷</h3>
+							  <p class="intro">Lorem ipsum dolor sit amet, consectetur 
+								  adipisicing elit quis enim nam dolorem recusandae!</p>
+							  <p class="date">Date: 10/03/2020</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="banner-bottom-right-left">
+					<div class="banner-bottom-right-left1">
+						<div class="box box1">
+							<div class="cover top-left">
+							  <h3 class="title">我们曾踏足山巅</h3>
+							  <p class="intro">Lorem ipsum dolor sit amet, consectetur 
+								adipisicing elit quis enim nam dolorem recusandae!</p>
+							  <p class="date">Date: 10/03/2020</p>
+							</div>
+						</div>
+					</div>
+					<div class="banner-bottom-right-left1">
+						<div class="box box2">
+							<div class="cover top-left">
+							  <h3 class="title">只为向着前方前进</h3>
+							  <p class="intro">Lorem ipsum dolor sit amet, consectetur 
+								adipisicing elit quis enim nam dolorem recusandae!</p>
+							  <p class="date">Date: 10/03/2020</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //banner-bottom -->
+<!-- about -->
+	<div class="about" id="about">
+		<div class="container">
+			<div class="about-grids animated wow lightSpeedIn" data-wow-delay="700ms">
+				<div class="col-md-6 about-grid-left">
+					<div class="grid">
+						<figure class="effect-moses">
+							<img src="images/4.jpg" alt=" " class="img-responsive" />
+							<figcaption>
+								<h3>用心<span>工作</span></h3>
+							     <p>Day  Day  Happy</p>
+							</figcaption>			
+						</figure>
+					</div>
+				</div>
+				<div class="col-md-6 about-grid-right">
+					<div class="banner-bottom-text">
+						<h3>you</h3>
+						<div class="banner-bottom-text-pos banner-bottom-text-pos1">
+							<h3>welcome</h3>
+						</div>
+					</div>
+					<div class="bar1 bar-con bar-con1">
+						<div class="bar2" data-percent="70"></div>
+					</div>
+						<script>
+							(function ( $ ) {
+								  $.fn.progress = function() {
+									var percent = this.data("percent");
+									this.css("width", percent+"%");
+								  };
+								}( jQuery ));
+
+								$(document).ready(function(){
+								  $(".bar1 .bar2").progress();
+								});
+						</script>
+					<p>有你团队更完美</p>
+					<ul>
+						<li>你的加入会让我们倍感欢欣</li>
+						<li>你的行动会让客户倍感舒心</li>
+						<li>你的性格会让自己变得活跃</li>
+						<li>你的努力会让最终结果最棒</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<div class="team">
+		<div class="container">
+			<div class="col-md-3 team-grid animated wow fadeInDown" data-wow-delay="500ms">
+				<div class="team-grid1">
+					<img src="images/5.jpg" alt=" " class="img-responsive" />
+					<div class="team-grid1-pos">
+						<ul class="social-nav model-8 social-icons">
+							<li><a href="#" class="facebook"><i></i></a></li>
+							<li><a href="#" class="twitter"><i> </i></a></li>
+							<li><a href="#" class="g"><i></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<p>完美化身的团队协作者，帅的乱滋溜</p>
+				<h3>陈总</h3>
+			</div>
+			<div class="col-md-3 team-grid animated wow fadeInDown" data-wow-delay="700ms">
+				<div class="team-grid1">
+					<img src="images/6.jpg" alt=" " class="img-responsive" />
+					<div class="team-grid1-pos">
+						<ul class="social-nav model-8 social-icons">
+							<li><a href="#" class="facebook"><i></i></a></li>
+							<li><a href="#" class="twitter"><i> </i></a></li>
+							<li><a href="#" class="g"><i></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<p>一位拥有着后台过硬技术的大牛</p>
+				<h3>山总</h3>
+			</div>
+			<div class="col-md-3 team-grid animated wow fadeInDown" data-wow-delay="800ms">
+				<div class="team-grid1">
+					<img src="images/7.jpg" alt=" " class="img-responsive" />
+					<div class="team-grid1-pos">
+						<ul class="social-nav model-8 social-icons">
+							<li><a href="#" class="facebook"><i></i></a></li>
+							<li><a href="#" class="twitter"><i> </i></a></li>
+							<li><a href="#" class="g"><i></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<p>正义和开朗的化身，团队的汽水</p>
+				<h3>王董</h3>
+			</div>
+			<div class="col-md-3 team-grid animated wow fadeInDown" data-wow-delay="900ms">
+				<div class="team-grid1">
+					<img src="images/8.jpg" alt=" " class="img-responsive" />
+					<div class="team-grid1-pos">
+						<ul class="social-nav model-8 social-icons">
+							<li><a href="#" class="facebook"><i></i></a></li>
+							<li><a href="#" class="twitter"><i> </i></a></li>
+							<li><a href="#" class="g"><i></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<p>一位业界领袖大佬，有他在没意外，您可以放心加入我们</p>
+				<h3>杰神</h3>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+<!-- //about -->
+<!-- about-bottom -->
+	<div class="about-bottom animated wow bounceInDown" data-wow-delay="500ms">
+		<div class="container">
+			<p>团队联系电话</p>
+			<h3>+17811109074</h3>
+			<h4><i>站在高远的山巅，望着远方，我们希望你也能一样</i></h4>
+		</div>
+	</div>
+<!-- //about-bottom -->
+<!-- services -->
+	<div class="services" id="services">
+		<div class="container">
+			<div class="services-grids">
+				<div class="col-md-6 services-grid-left animated wow bounceInLeft" data-wow-delay="500ms">
+					<div class="banner-bottom-text">
+						<h3>VeryGoods!</h3>
+						<div class="banner-bottom-text-pos">
+							<h3>GoRunRun</h3>
+						</div>
+					</div>
+					<div class="bar1 bar-con bar-con1">
+						<div class="bar3" data-percent="70"></div>
+					</div>
+						<script>
+							(function ( $ ) {
+								  $.fn.progress = function() {
+									var percent = this.data("percent");
+									this.css("width", percent+"%");
+								  };
+								}( jQuery ));
+
+								$(document).ready(function(){
+								  $(".bar1 .bar3").progress();
+								});
+						</script>
+				</div>
+				<div class="col-md-6 services-grid-right">
+					<div class="col-md-6 services-grid-right-grid">
+						<div class="services-grid-right-grid1">
+							<img src="images/tuantui2.jpeg" alt=" " class="img-responsive" />
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+							  合作遵守规则
+							</button>
+
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">壁咚</h4>
+								  </div>
+								  <div class="modal-body">
+									这里有你想要的队伍，有你想要的成就梦想的必经之路，你的勤奋努力以及超级棒的状态，一定能靠自己走出一条别人无法达到的高度
+								  </div>
+								</div>
+							  </div>
+							</div>
+							<p>注意事项</p>
+						</div>
+					</div>
+					<div class="col-md-6 services-grid-right-grid">
+						<div class="services-grid-right-grid1">
+							<img src="images/tuandui1.jpeg" alt=" " class="img-responsive" />
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+							  合作励志语句
+							</button>
+
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">壁咚~</h4>
+								  </div>
+								  <div class="modal-body">
+									这里有你想要的队伍，有你想要的成就梦想的必经之路，你的勤奋努力以及超级棒的状态，一定能靠自己走出一条别人无法达到的高度
+								  </div>
+								</div>
+							  </div>
+							</div>
+							<p>励志语句</p>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //services -->
+
+<!-- //services-bottom -->
+<!-- gallery -->
+	<div class="gallery" id="gallery">
+		<div class="container">
+			<div class="gallery-grids">
+				<div class="col-md-5 gallery-grid-left animated wow bounceInLeft" data-wow-delay="500ms">
+					<h3>别犹豫了，这是史上最最最优秀的跑腿团队，你还在等什么，快来加入啊!!!</h3>
+				</div>
+				<div class="col-md-7 gallery-grid-right animated wow bounceInRight" data-wow-delay="500ms">
+					<div class="banner-bottom-text">
+						<h3>Nice</h3>
+						<div class="banner-bottom-text-pos banner-bottom-text-pos2">
+							<h3>GoRunRun</h3>
+						</div>
+					</div>
+					<div class="bar1 bar-con bar-con1">
+						<div class="bar3" data-percent="70"></div>
+					</div>
+						<script>
+							(function ( $ ) {
+								  $.fn.progress = function() {
+									var percent = this.data("percent");
+									this.css("width", percent+"%");
+								  };
+								}( jQuery ));
+
+								$(document).ready(function(){
+								  $(".bar1 .bar3").progress();
+								});
+						</script>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="gallery-grids1">
+				<div class="gallery-grid1 animated wow slideInLeft" data-wow-delay="500ms">
+					<div class="item item-type-move">
+						<a href="images/14.jpg" class="b-link-stripe b-animate-go  swipebox item-hover" title="Frequent Flyer">
+							<div class="item-info">
+								<div class="headline">
+									不气馁
+									<div class="line"></div>
+								</div>
+								<div class="date-month">March 29, 2020</div>							
+							</div>
+							<div class="mask"></div>
+						</a>
+						<div class="item-img">
+							<img src="images/14.jpg" alt=" " class="img-responsive" /> 
+						</div>	
+					</div>
+				</div>
+				<div class="gallery-grid1 animated wow slideInLeft" data-wow-delay="600ms">
+					<div class="item item-type-move">
+						<a href="images/16.jpg" class="b-link-stripe b-animate-go  swipebox item-hover" title="Frequent Flyer">
+							<div class="item-info">
+								<div class="headline">
+									潇洒
+									<div class="line"></div>
+								</div>
+								<div class="date-month">March 29, 2020</div>							
+							</div>
+							<div class="mask"></div>
+						</a>
+						<div class="item-img">
+							<img src="images/16.jpg" alt=" " class="img-responsive" /> 
+						</div>	
+					</div>
+				</div>
+				<div class="gallery-grid1 animated wow slideInLeft" data-wow-delay="700ms">
+					<div class="item item-type-move">
+						<a href="images/15.jpg" class="b-link-stripe b-animate-go  swipebox item-hover" title="Frequent Flyer">
+							<div class="item-info">
+								<div class="headline">
+									安稳
+									<div class="line"></div>
+								</div>
+								<div class="date-month">March 29, 2020</div>							
+							</div>
+							<div class="mask"></div>
+						</a>
+						<div class="item-img">
+							<img src="images/15.jpg" alt=" " class="img-responsive" /> 
+						</div>	
+					</div>
+				</div>
+				<div class="gallery-grid1 animated wow slideInLeft" data-wow-delay="800ms">
+					<div class="item item-type-move">
+						<a href="images/18.jpg" class="b-link-stripe b-animate-go  swipebox item-hover" title="Frequent Flyer">
+							<div class="item-info">
+								<div class="headline">
+									舒缓
+									<div class="line"></div>
+								</div>
+								<div class="date-month">March 29, 2020</div>							
+							</div>
+							<div class="mask"></div>
+						</a>
+						<div class="item-img">
+							<img src="images/18.jpg" alt=" " class="img-responsive" /> 
+						</div>	
+					</div>
+				</div>
+				<div class="gallery-grid1 animated wow slideInLeft" data-wow-delay="900ms">
+					<div class="item item-type-move">
+						<a href="images/17.jpg" class="b-link-stripe b-animate-go  swipebox item-hover" title="Frequent Flyer">
+							<div class="item-info">
+								<div class="headline">
+									清净
+									<div class="line"></div>
+								</div>
+								<div class="date-month">March 29, 2020</div>							
+							</div>
+							<div class="mask"></div>
+						</a>
+						<div class="item-img">
+							<img src="images/17.jpg" alt=" " class="img-responsive" /> 
+						</div>	
+					</div>
+				</div>
+				<div class="gallery-grid1 animated wow slideInLeft" data-wow-delay="1000ms">
+					<div class="item item-type-move">
+						<a href="images/19.jpg" class="b-link-stripe b-animate-go  swipebox item-hover" title="Frequent Flyer">
+							<div class="item-info">
+								<div class="headline">
+								    自由
+									<div class="line"></div>
+								</div>
+								<div class="date-month">March 29, 2020</div>							
+							</div>
+							<div class="mask"></div>
+						</a>
+						<div class="item-img">
+							<img src="images/19.jpg" alt=" " class="img-responsive" /> 
+						</div>	
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+				<!-- script-for-swipebox -->
+					<link rel="stylesheet" href="css/swipebox.css">
+					<script src="js/jquery.swipebox.min.js"></script> 
+						<script type="text/javascript">
+							jQuery(function($) {
+								$(".swipebox").swipebox();
+							});
+						</script>
+				<!-- //script-for-swipebox -->
+			</div>
+		</div>
+	</div>
+
+<!-- footer -->
+	
+	<div class="footer-copy animated wow bounceInUp" data-wow-delay="600ms">
+		<div class="container">
+			<p>GoRunRun专业团队制作</p>
+		</div>
+	</div>
+	<script>
+function gotoUserService(){
+  window.location.href ="receiver-home.html"
+}
+	</script>
+<!-- //footer -->
+<script src="js/bootstrap.min.js"></script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>

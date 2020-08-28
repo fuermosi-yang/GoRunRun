@@ -1,0 +1,17 @@
+server:
+  port: 1005
+spring:
+  application:
+    name: run-sms
+  rabbitmq:
+    host: 127.0.0.1
+    username: gorunrun
+    password: gorunrun
+    virtual-host: /gorunrun
+
+gorunrun: #验证码
+  sms:
+    accessKeyId: LTAI4GJpCBY5eYxdhsuB39RC # 你自己的accessKeyId
+    accessKeySecret: wjSHBoRlKGFQsqXQUfT71E3SoExWvR # 你自己的AccessKeySecret
+    signName: leyougou # 签名名称
+    verifyCodeTemplate: SMS_199797497 # 模板名称

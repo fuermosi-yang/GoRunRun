@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .fonts{
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <el-radio-group v-model="labelPosition" size="small">
+        <el-radio-button label="left">左对齐</el-radio-button>
+        <el-radio-button label="right">右对齐</el-radio-button>
+        <el-radio-button label="top">顶部对齐</el-radio-button>
+    </el-radio-group>
+    <div style="margin-left: 45%">
+        <span id="fonts">
+           <b>评价</b>
+        </span>
+    </div>
+    <div style="margin-left: 40%;" >
+        <el-form :label-position="labelPosition" label-width="80px" >
+            <el-form-item label="评价" prop="appraiseshow">
+                <el-col :span="4">
+                    <el-input v-model="appraise.appraiseshow"></el-input>
+                </el-col>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="save">发布评价</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+</div>
+</body>
+<script src="dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="node_modules/axios/dist/axios.js"></script>
+
+<script src="node_modules/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+
+            return {
+                labelPosition: 'right',
+                appraise:{
+
+                }
+
+
+            };
+        },
+        methods:{
+            save(){
+                var _this = this
+
+                this.appraise.uid=2;
+                this.appraise.rid=3;
+                debugger;
+                axios.post("http://api.gorunrun.com/api/order/appraise/insertAppraise",this.appraise).then(function({data}=res){
+
+                    location.href="user-home.html";
+                })
+            }
+
+
+        },
+
+        /* created(){
+             console.log(location.search);
+
+
+              axios.get("http://localhost:1002/api/user/receiver/rid/1").then(function (res) {
+
+                this.re = res.data;
+                 debugger;
+
+             })
+
+         }*/
+
+
+    })
+</script>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/run-receiver/run-receiver-interface/run-receiver-interface.iml" filepath="$PROJECT_DIR$/run-receiver/run-receiver-interface/run-receiver-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/run-receiver/run-receiver-service/run-receiver-service.iml" filepath="$PROJECT_DIR$/run-receiver/run-receiver-service/run-receiver-service.iml" />
+    </modules>
+  </component>
+</project>
